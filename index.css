@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+GB+S:ital,wght@0,100..400;1,100..400&display=swap');
+
 
 * {
     margin: 0;
@@ -20,7 +22,6 @@
 }
 
 *::-webkit-scrollbar-track {
-    border-radius: 5px;
     background-color: var(--cor-primaria);
 }
   
@@ -33,7 +34,6 @@
 }
   
 *::-webkit-scrollbar-thumb {
-    border-radius: 5px;
     background-color: var(--cor-quaternaria);
 }
   
@@ -50,7 +50,7 @@ body {
     color: var(--cor-primaria);
 
     background-image: url("./utils/imgs/background.jpg");
-    background-size: contain;
+    background-size: cover;
 
     width: 100vw;
     height: 100vh;
@@ -62,15 +62,44 @@ body > header {
     height: 10%;
 
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between;align-items: center;
     padding: .5rem;
+}
+
+body > header h1 {
+    font-family: "Playwrite GB S", cursive;
+
 }
 
 body > header > nav > ul {
     display: flex;
     align-items: center;
-    gap: 4rem;
+    gap: 2rem;
     height: 100%;
+    width: 100%;
+}
+
+body > header > nav > ul > li {
+    width: 50%;
+    height: 100%;
+}
+
+body > header > nav > ul > li > a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+    width: 100%;
+    height: 100%;
+}
+
+body > header > nav > ul > li > a:hover {
+    cursor: pointer;
+    color: var(--cor-secundaria);
+    transition: .4s;
+    opacity: .8;
 }
 
 body > main {
@@ -79,6 +108,29 @@ body > main {
 
     display: flex;
 
+}
+
+body > main > .sobre__nos {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body > main > .sobre__nos > div {
+    width: 60%;
+    height: 80%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: .6rem;
+
+    text-align: justify;
+
+    font-size: 1.3rem;
 }
 
 body > main > section {
@@ -96,7 +148,6 @@ body > main > section {
     overflow: auto;
 }
 
-/*
 body > main > section > div {
     width: 24%;
     height: 70%;
@@ -120,10 +171,6 @@ body > main > section > div > figcaption {
     width: 95%;
     height: 40%;
 }
-*/
-
-body > main > section > div:hover {
-}
 
 @media (prefers-reduced-motion: no-preference) {
     body > main > section > div {
@@ -135,10 +182,9 @@ body > main > section > div:hover {
 
 @keyframes scaleOnScroll {
     from {
-        scale: .5;
+        scale: .7;
     }
 }
-
 
 body > main > aside {
     width: 10%;
@@ -150,7 +196,44 @@ body > main > aside {
         repeating-linear-gradient(45deg,#502e11 -6.25% 6.25%,#28100b 0 18.75%);
         background-size: 200px 200px;
 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: .1rem 0;
 
+}
+
+body > main > aside > section {
+    text-align: center;
+    width: 100%;
+    height: 20%;
+}
+
+body > main > aside > div {
+    width: 100%;
+    height: 80%;
+}
+
+body > main > aside > div > ul {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+body > main > aside > div > ul > li {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body > main > aside > div > ul > li:hover {
+    cursor: pointer;
+    background-color: var(--cor-terciaria);
+    transition: .4s;
+    opacity: .8;
 }
 
 body > footer {
@@ -165,3 +248,14 @@ body > footer {
     padding: .5rem;
 }
 
+body > footer > div > p > a {
+    text-decoration: none;
+    color: inherit;
+}
+
+body > footer > div > p > a:hover {
+    cursor: pointer;
+    color: var(--cor-secundaria);
+    transition: .4s;
+    opacity: .8;
+} 

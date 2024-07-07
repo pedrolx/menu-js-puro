@@ -1,4 +1,9 @@
-import { pratosSegunda } from "./utils/database.js";
+import {
+    pratosSegunda, pratosTerca, pratosQuarta,
+    pratosQuinta, pratosSexta, pratosSabado, pratosDomingo
+} from "./utils/database.js";
+
+const menuAtual = pratosSegunda;
 
 //retorna o html do card
 const criaCard = (nomePrato, descricaoPrato, imgUrl) => {
@@ -46,15 +51,62 @@ const criaCard = (nomePrato, descricaoPrato, imgUrl) => {
 
 //seleciona e lista os pratos na tag section
 const listaPratosNaSection = (listaPratos) => {
-    listaPratos.forEach( prato => {
-        const menuContainer = document.getElementById("menu");
+    const menuContainer = document.getElementById("menu");
+    limpaPratosNaSection();
+    listaPratos.forEach(prato => {
         const card = criaCard(prato.nome, prato.descricao, prato.img);
         menuContainer.append(card);
     });
 }
 
+const limpaPratosNaSection = () => {
+    const menuContainer = document.getElementById("menu");
+    menuContainer.innerHTML = "";
+}
 
-const menuAtual = localStorage.getItem("menu") ? localStorage.getItem("menu") : 
-    pratosSegunda;
+// atualiza array menu atual
+const atualizaMenuAtual = (novaLista) => {
+    menuAtual.forEach(e => menuAtual.pop());
+    novaLista.forEach(e => menuAtual.push(e));
+    listaPratosNaSection(novaLista);
+}
 
-listaPratosNaSection(menuAtual);
+const selecionaListaPratos = (identificacao) => {
+    switch (identificacao) {
+        case "segunda":
+            atualizaMenuAtual(pratosSegunda);
+            break;
+        case "terca":
+            atualizaMenuAtual(pratosTerca);
+            break;
+        case "quarta":
+            atualizaMenuAtual(pratosQuarta);
+            break;
+        case "quinta":
+            atualizaMenuAtual(pratosQuinta);
+            break;
+        case "sexta":
+            atualizaMenuAtual(pratosSexta);
+            break;
+        case "sabado":
+            atualizaMenuAtual(pratosSabado);
+            break;
+        case "domingo":
+            atualizaMenuAtual(pratosDomingo);
+            break;
+    }
+}
+
+const atualizaPratosEmExibicao = (evento) => {
+    selecionaListaPratos(evento.target.id);
+    evento.target.parentNode.parentNode.scrollTop = 0;
+    evento.target.parentNode.parentNode.scrollLeft = 0;
+}
+
+const sectionMenu = document.getElementById("menu");
+const ulDiasSemana = document.getElementById("lista__dias__semana");
+
+ulDiasSemana.addEventListener("click", atualizaPratosEmExibicao);
+sectionMenu.addEventListener("change", listaPratosNaSection(menuAtual));
+
+
